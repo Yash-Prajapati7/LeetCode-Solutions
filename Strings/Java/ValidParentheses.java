@@ -12,8 +12,7 @@ public class ValidParentheses {
         String s = sc.nextLine();
         sc.close();
         
-        // Check if the input string has valid parentheses
-        System.out.println(isValid(s) ? "True" : "False");
+        System.out.println(isValid(s));
     }
 
     public static boolean isValid(String s) {
