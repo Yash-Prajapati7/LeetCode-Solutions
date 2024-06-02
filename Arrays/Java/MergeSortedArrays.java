@@ -19,11 +19,6 @@ public class MergeSortedArrays {
                 nums1[k--] = nums1[i--];
             }
         }
-
-        // Copy remaining elements of nums2 if any
-        while (j >= 0) {
-            nums1[k--] = nums2[j--];
-        }
     }
 
     public static void main(String[] args) {
