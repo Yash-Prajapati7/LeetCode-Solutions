@@ -1,3 +1,7 @@
+/*
+Leetcode Question :
+https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone/
+*/
 #include <vector>
 #include <algorithm>
 #include <cmath> // for abs
