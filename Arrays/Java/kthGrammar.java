@@ -1,4 +1,7 @@
 /*
+Leetcode Question :
+https://leetcode.com/problems/k-th-symbol-in-grammar/
+
 Intuition:
 Convert to 0-Based Index:The input k is 1-based. Subtract 1 to make it 0-based for easier calculations.
 Iterate While k is Greater than 0.
