@@ -1,3 +1,7 @@
+/*
+LeetCode Question:
+https://leetcode.com/problems/length-of-last-word/
+*/
 public class LengthOfTheLastWord {
     public static int lengthOfLastWord(String s) {
         // Trim any leading or trailing whitespace
