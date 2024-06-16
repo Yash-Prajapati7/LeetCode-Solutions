@@ -1,3 +1,8 @@
+/*
+Leetcode Question :
+https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone/
+*/
+
 public class Solution {
     public int minMovesToSeat(int[] seats, int[] students) {
         Arrays.sort(seats);
