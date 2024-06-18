@@ -1,3 +1,7 @@
+/*
+Leetcode Question :
+https://leetcode.com/problems/find-peak-element/
+*/
 public static int findPeakElement(int[] nums) {
         if(nums.length == 1) {
             return 0;
