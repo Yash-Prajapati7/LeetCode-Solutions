@@ -3,20 +3,21 @@ Leetcode Question :
 https://leetcode.com/problems/palindrome-linked-list/description/
 */
 public class PalindromeLLCheck {
-    public static Node returnMiddleNode(Node head) {
-        Node tortoise = head;
-        Node hare = head;
-        while(hare.next != null && hare.next.next != null) {
-            tortoise = tortoise.next;
-            hare = hare.next.next;
+    public static ListNode returnMiddleNode(ListNode head) {
+        ListNode slow = head; // renamed tortoise to slow
+        ListNode fast = head; // renamed hare to fast
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        return tortoise;
+        return slow;
     }
-    public static Node reverse(Node head) {
-        Node temp = head;
-        Node prev = null;
-        Node front;
-        while(temp != null) {
+
+    public static ListNode reverse(ListNode head) {
+        ListNode temp = head;
+        ListNode prev = null;
+        ListNode front;
+        while (temp != null) {
             front = temp.next;
             temp.next = prev;
             prev = temp;
@@ -24,38 +25,42 @@ public class PalindromeLLCheck {
         }
         return prev;
     }
-    public static boolean checkPalindrome(Node head) {
-        Node partition = returnMiddleNode(head);
-        Node first = head;
-        Node second = reverse(partition.next);
-        while(second != null) {
-            if(first.data != second.data) return false;
+
+    public static boolean isPalindrome(ListNode head) {
+        ListNode partition = returnMiddleNode(head);
+        ListNode first = head;
+        ListNode second = reverse(partition.next);
+        while (second != null) {
+            if (first.val != second.val) return false;
             first = first.next;
             second = second.next;
         }
         return true;
     }
-    public static Node fromArray(int[] arr) {
+
+    public static ListNode fromArray(int[] arr) {
         if (arr == null || arr.length == 0) return null;
-        Node head = new Node(arr[0]);
-        Node temp = head;
+        ListNode head = new ListNode(arr[0]);
+        ListNode temp = head;
         for (int i = 1; i < arr.length; i++) {
-            temp.next = new Node(arr[i]);
+            temp.next = new ListNode(arr[i]);
             temp = temp.next;
         }
         return head;
     }
-    public static void print(Node head) {
-        Node temp = head;
+
+    public static void print(ListNode head) {
+        ListNode temp = head;
         while (temp != null) {
-            System.out.print(temp.data + "->");
+            System.out.print(temp.val + "->");
             temp = temp.next;
         }
         System.out.println("null");
     }
+
     public static void main(String[] args) {
-        Node head = null;
-        int [] nums = {4,21,2,5,6};
+        ListNode head = null;
+        int[] nums = {4, 21, 2, 5, 6};
         head = fromArray(nums);
         System.out.println(checkPalindrome(head));
     }
