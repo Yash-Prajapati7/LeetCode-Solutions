@@ -1,6 +1,5 @@
-/*
-Leetcode Question : https://leetcode.com/problems/left-and-right-sum-differences/
-*/
+// Leetcode Question : https://leetcode.com/problems/left-and-right-sum-differences/
+
 class Solution {
     public int[] leftRightDifference(int[] nums) {
         int n = nums.length;
