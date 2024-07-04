@@ -17,6 +17,26 @@ class Solution {
     }
 }
 ```
+
+### If you wish to avoid using a GLOBAL variable
+```java
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        inorderHelper(root, result);
+        return result;
+    }
+    
+    private void inorderHelper(TreeNode root, List<Integer> result) {
+        if (root == null) {
+            return;
+        }
+        inorderHelper(root.left, result);
+        result.add(root.val);
+        inorderHelper(root.right, result);
+    }
+}
+```
 ## Method - 2 (Modifying the Morris's Inorder Traversal method)
 ```java
 class Solution {
