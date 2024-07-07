@@ -9,13 +9,13 @@ class Solution {
             indexValues.put(inorder[i], i);
         }
         // Call the private helper function to recursively build the tree
-        TreeNode root = buildTree(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1, indexValues);
+        TreeNode root = buildTree(preorder, 0, preorder.length - 1, 0, inorder.length - 1, indexValues);
 
         return root;
     }
 
     // The prefix 'pre' refers to preorder & 'in' refers to inorder
-    private TreeNode buildTree(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart, int inEnd, HashMap<Integer, Integer> indexValues) {
+    private TreeNode buildTree(int[] preorder, int preStart, int preEnd, int inStart, int inEnd, HashMap<Integer, Integer> indexValues) {
         // Base case: If the start indices exceed the end indices, return null
         if (preStart > preEnd || inStart > inEnd) {
             return null;
@@ -31,10 +31,10 @@ class Solution {
         int nodesOnLeft = inorderRootIndex - inStart;
 
         // Recursively build the left subtree
-        root.left = buildTree(preorder, preStart + 1, preStart + nodesOnLeft, inorder, inStart, inorderRootIndex - 1, indexValues);
+        root.left = buildTree(preorder, preStart + 1, preStart + nodesOnLeft, inStart, inorderRootIndex - 1, indexValues);
 
         // Recursively build the right subtree
-        root.right = buildTree(preorder, preStart + nodesOnLeft + 1, preEnd, inorder, inorderRootIndex + 1, inEnd, indexValues);
+        root.right = buildTree(preorder, preStart + nodesOnLeft + 1, preEnd,inorderRootIndex + 1, inEnd, indexValues);
 
         return root;
     }
