@@ -128,8 +128,10 @@ The `dfs` function explores the islands in `grid2` recursively to determine whet
 
 The `dfs` function is invoked from the `countSubIslands` function:
 ```java
-if (grid2[i][j] == 1 && dfs(grid1, grid2, i, j)) {
-    count++;
+if(grid2[i][j] == 1) {
+    if(dfs(grid1, grid2, i, j)) {
+        count++;
+    }    
 }
 ```
 
