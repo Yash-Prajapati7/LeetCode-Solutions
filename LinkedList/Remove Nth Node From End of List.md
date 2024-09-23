@@ -1,7 +1,6 @@
-/*
-Leetcode Question :
-https://leetcode.com/problems/remove-nth-node-from-end-of-list/
-*/
+Leetcode Question : [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
+
+```java
 public class RemoveNthNodeFromEnd {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if (head == null) {
@@ -39,3 +38,4 @@ public class RemoveNthNodeFromEnd {
         return head;
     }
 }
+```
