@@ -30,4 +30,4 @@ class Solution {
     }
 }
 ```
-For Maths based approach [visit here]()
+For Maths based approach [visit here](https://github.com/Yash-Prajapati7/LeetCode-Solutions/blob/main/GeneralProblems/Pascal's%20Triangle.md)
