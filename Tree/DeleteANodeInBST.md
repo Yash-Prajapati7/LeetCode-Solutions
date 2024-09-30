@@ -1,4 +1,4 @@
-Leetcode Question : https://leetcode.com/problems/delete-node-in-a-bst/
+Leetcode Question : [Delete Node in a BST](https://leetcode.com/problems/delete-node-in-a-bst/)
 ```java
 class Solution {
     private TreeNode returnLastRight(TreeNode root) {
@@ -7,6 +7,7 @@ class Solution {
         }
         return root;
     }
+
     private TreeNode helper(TreeNode root) {
         if(root.left == null) {
             return root.right;
@@ -21,13 +22,16 @@ class Solution {
         }
         return root.left;
     }
+
     public TreeNode deleteNode(TreeNode root, int key) {
         if(root == null) {
             return null;
         }
+
         if(root.val == key) {
             return helper(root);
         }
+
         TreeNode current = root;
         while(current != null) {
             if(current.val > key) {
