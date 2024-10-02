@@ -1,4 +1,4 @@
-Leetcode Question : https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/
+Leetcode Question : [kth Smallest Element In BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
 ```java
 class Solution {
     public int kthSmallest(TreeNode root, int k) {
