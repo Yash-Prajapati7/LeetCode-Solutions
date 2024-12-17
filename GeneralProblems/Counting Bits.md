@@ -12,3 +12,11 @@ class Solution {
     }
 }
 ```
+
+### Explanation:
+To find the number of `1`s in the binary representation of numbers from `0` to `n`, we can observe the following pattern:
+1. **If `i` is even:**  
+   The number of `1`s in `i` is the same as the number of `1`s in `i / 2` (right-shifting an even number halves it without adding a new `1`).
+
+2. **If `i` is odd:**  
+   The number of `1`s in `i` is the number of `1`s in `(i - 1)` plus one additional `1` (as adding `1` to an even number makes it odd).
