@@ -112,3 +112,62 @@ public:
     }
 };
 ```
+
+### Modified Method - 2
+
+#### Java
+```java
+class Solution {
+    public boolean isZeroArray(int[] nums, int[][] queries) {
+        int n = nums.length;
+        int l = 0, r = 0;
+        int[] sweep = new int[n + 1];
+        
+        for(int[] query : queries) {
+            l = query[0];
+            r = query[1];
+
+            sweep[l] += 1;
+            sweep[r + 1] -= 1;
+        }
+
+        int freq = 0;
+        for(int i = 0; i < n; i++) {
+            freq += sweep[i];
+            if(freq < nums[i]) return false;
+        }
+
+        return true;
+    }
+}
+```
+
+#### C++
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    bool isZeroArray(vector<int>& nums, vector<vector<int>>& queries) {
+        int n = nums.size();
+        vector<int> sweep(n + 1, 0);
+
+        for(auto& query : queries) {
+            int l = query[0];
+            int r = query[1];
+
+            sweep[l] += 1;
+            sweep[r + 1] -= 1;
+        }
+
+        int freq = 0;
+        for(int i = 0; i < n; i++) {
+            freq += sweep[i];
+            if(freq < nums[i]) return false;
+        }
+
+        return true;
+    }
+};
+```
