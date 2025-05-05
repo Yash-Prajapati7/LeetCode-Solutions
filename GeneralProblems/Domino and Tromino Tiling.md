@@ -40,3 +40,4 @@ A[5] = 24  = 2 * 11 + 2
 A[6] = 53  = 2 * 24 + 5
 A[7] = 117 = 2 * 53 + 11
 ```
+For a dynamic programming approach [Click Here](https://github.com/Yash-Prajapati7/LeetCode-Solutions/blob/main/Dynamic%20Programming/Domino%20and%20Tromino%20Tiling.md)
