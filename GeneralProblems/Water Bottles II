@@ -1,0 +1,36 @@
+Leetcode Question : [Water Bottles II](https://leetcode.com/problems/water-bottles-ii)
+
+### Java
+
+```java
+class Solution {
+
+    public int maxBottlesDrunk(int numBottles, int numExchange) {
+        int ans = numBottles;
+        for (int empty = numBottles; empty >= numExchange; numExchange++) {
+            ans++;
+            empty -= numExchange - 1;
+        }
+        return ans;
+    }
+}
+```
+
+### C++
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int maxBottlesDrunk(int numBottles, int numExchange) {
+        int ans = numBottles;
+        for (int empty = numBottles; empty >= numExchange; numExchange++) {
+            ans++;
+            empty -= numExchange - 1;
+        }
+        return ans;
+    }
+};
+```
