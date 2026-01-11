@@ -9,14 +9,14 @@ class Solution {
         int currentArea = 0, max = -1, width;
 
         Deque<Integer> st = new ArrayDeque<>(n);
-        int left = 0, right = 0;
+        int currentIdx = 0, prevSmallerIdx = -1;
 
         for (int i = 0; i <= n; i++) {
             while (!st.isEmpty() && (i == n || heights[st.peek()] > heights[i])) {
-                right = st.pop();
-                left = st.isEmpty() ? -1 : st.peek();
-                width = i - left - 1;
-                currentArea = heights[right] * width;
+                currentIdx = st.pop();
+                prevSmallerIdx = st.isEmpty() ? -1 : st.peek();
+                width = i - prevSmallerIdx - 1;
+                currentArea = heights[currentIdx] * width;
                 max = (max < currentArea) ? currentArea : max;
             }
             st.push(i);
@@ -40,15 +40,15 @@ public:
         int currentArea = 0, max = -1, width;
 
         deque<int> st;
-        int left = 0, right = 0;
+        int currentIdx = 0, prevSmallerIdx = -1;
 
         for (int i = 0; i <= n; i++) {
             while (!st.empty() && (i == n || heights[st.back()] > heights[i])) {
-                right = st.back();
+                currentIdx = st.back();
                 st.pop_back();
-                left = st.empty() ? -1 : st.back();
-                width = i - left - 1;
-                currentArea = heights[right] * width;
+                prevSmallerIdx = st.empty() ? -1 : st.back();
+                width = i - prevSmallerIdx - 1;
+                currentArea = heights[currentIdx] * width;
                 max = (max < currentArea) ? currentArea : max;
             }
             st.push_back(i);
