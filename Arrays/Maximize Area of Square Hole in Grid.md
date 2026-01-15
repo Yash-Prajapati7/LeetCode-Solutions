@@ -1,0 +1,78 @@
+Leetcode Question : [Maximize Area of Square Hole in Grid](https://leetcode.com/problems/maximize-area-of-square-hole-in-grid/)
+
+### Java
+
+```java
+class Solution {
+    public int maximizeSquareHoleArea(int n, int m, int[] hBars, int[] vBars) {
+        Arrays.sort(hBars);
+        Arrays.sort(vBars);
+        int hmax = 1;
+        int vmax = 1;
+        int hcur = 1;
+        int vcur = 1;
+
+        for (int i = 1; i < hBars.length; i++) {
+            if (hBars[i] == hBars[i - 1] + 1) {
+                hcur++;
+            } else {
+                hcur = 1;
+            }
+            hmax = hmax < hcur ? hcur : hmax;
+        }
+
+        for (int i = 1; i < vBars.length; i++) {
+            if (vBars[i] == vBars[i - 1] + 1) {
+                vcur++;
+            } else {
+                vcur = 1;
+            }
+            vmax = vmax < vcur ? vcur : vmax;
+        }
+
+        int side = Math.min(hmax, vmax) + 1;
+        return side * side;
+    }
+}
+```
+
+### C++
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int maximizeSquareHoleArea(int n, int m, vector<int>& hBars, vector<int>& vBars) {
+        sort(hBars.begin(), hBars.end());
+        sort(vBars.begin(), vBars.end());
+
+        int hmax = 1;
+        int vmax = 1;
+        int hcur = 1;
+        int vcur = 1;
+
+        for (int i = 1; i < hBars.size(); i++) {
+            if (hBars[i] == hBars[i - 1] + 1) {
+                hcur++;
+            } else {
+                hcur = 1;
+            }
+            hmax = hmax < hcur ? hcur : hmax;
+        }
+
+        for (int i = 1; i < vBars.size(); i++) {
+            if (vBars[i] == vBars[i - 1] + 1) {
+                vcur++;
+            } else {
+                vcur = 1;
+            }
+            vmax = vmax < vcur ? vcur : vmax;
+        }
+
+        int side = min(hmax, vmax) + 1;
+        return side * side;
+    }
+};
+```
