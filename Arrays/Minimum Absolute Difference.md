@@ -5,22 +5,24 @@ Leetcode Question : [Minimum Absolute Difference](https://leetcode.com/problems/
 ```java
 class Solution {
     public List<List<Integer>> minimumAbsDifference(int[] arr) {
-        List<List<Integer>> result = new ArrayList<>();
+        List<List<Integer>> ans = new ArrayList<>();
         Arrays.sort(arr);
         int diff = Integer.MAX_VALUE;
-        int n = arr.length;
+        int current = 0;
 
-        for (int i = 1; i < n; i++) {
-            if (arr[i] - arr[i - 1] < diff) {
-                diff = arr[i] - arr[i - 1];
-                result.clear();
-                result.add(Arrays.asList(arr[i - 1], arr[i]));
-            } else if (arr[i] - arr[i - 1] == diff) {
-                result.add(Arrays.asList(arr[i - 1], arr[i]));
+        for(int i = 0; i < arr.length - 1; i++) {
+            current = arr[i + 1] - arr[i];
+            if(current < diff) {
+                ans.clear();
+                diff = current;
+            }
+            
+            if(current == diff) {
+                ans.add(List.of(arr[i], arr[i + 1]));
             }
         }
 
-        return result;
+        return ans;
     }
 }
 ```
@@ -34,22 +36,24 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int>> minimumAbsDifference(vector<int>& arr) {
-        vector<vector<int>> result;
+        vector<vector<int>> ans;
         sort(arr.begin(), arr.end());
         int diff = INT_MAX;
-        int n = arr.size();
+        int current = 0;
 
-        for (int i = 1; i < n; i++) {
-            if (arr[i] - arr[i - 1] < diff) {
-                diff = arr[i] - arr[i - 1];
-                result.clear();
-                result.push_back({arr[i - 1], arr[i]});
-            } else if (arr[i] - arr[i - 1] == diff) {
-                result.push_back({arr[i - 1], arr[i]});
+        for(int i = 0; i < arr.size() - 1; i++) {
+            current = arr[i + 1] - arr[i];
+            if(current < diff) {
+                ans.clear();
+                diff = current;
+            }
+
+            if(current == diff) {
+                ans.push_back({arr[i], arr[i + 1]});
             }
         }
 
-        return result;
+        return ans;
     }
 };
 ```
