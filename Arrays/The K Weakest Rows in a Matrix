@@ -1,0 +1,150 @@
+Leetcode Question : [The K Weakest Rows in a Matrix](https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/)
+
+## Approach - 1 (Brute force)
+
+### Java
+
+```java
+class Solution {
+    public int[] kWeakestRows(int[][] grid, int k) {
+        int m = grid.length, n = grid[0].length;
+        int[] rowRanks = new int[m];
+        int[] result = new int[k];
+        
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                rowRanks[i] += grid[i][j];
+            }
+        }
+
+        int l = 0;
+
+        while(k-- > 0) {
+            int min = Integer.MAX_VALUE;
+
+            for(int i = 0; i < m; i++) {
+                if(min > rowRanks[i]) {
+                    result[l] = i;
+                    min = rowRanks[i];
+                }
+            }
+
+            rowRanks[result[l]] = Integer.MAX_VALUE;
+            l++;
+        }
+
+        return result;
+    }
+}
+```
+
+### C++
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> kWeakestRows(vector<vector<int>>& grid, int k) {
+        int m = grid.size(), n = grid[0].size();
+        vector<int> rowRanks(m, 0);
+        vector<int> result(k);
+        
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                rowRanks[i] += grid[i][j];
+            }
+        }
+
+        int l = 0;
+
+        while(k-- > 0) {
+            int minVal = INT_MAX;
+
+            for(int i = 0; i < m; i++) {
+                if(minVal > rowRanks[i]) {
+                    result[l] = i;
+                    minVal = rowRanks[i];
+                }
+            }
+
+            rowRanks[result[l]] = INT_MAX;
+            l++;
+        }
+
+        return result;
+    }
+};
+```
+
+## Approach - 2 (Optimised)
+
+### Java
+
+```java
+class Solution {
+    public int[] kWeakestRows(int[][] mat, int k) {
+        int m = mat.length, n = mat[0].length;
+
+        int[][] arr = new int[m][2]; // {soldiers, index}
+
+        for (int i = 0; i < m; i++) {
+            int left = 0, right = n;
+            while (left < right) {
+                int mid = left + (right - left) / 2;
+                if (mat[i][mid] == 1) left = mid + 1;
+                else right = mid;
+            }
+            arr[i][0] = left;
+            arr[i][1] = i;
+        }
+
+        Arrays.sort(arr, (a, b) -> 
+            a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]
+        );
+
+        int[] res = new int[k];
+        for (int i = 0; i < k; i++) {
+            res[i] = arr[i][1];
+        }
+
+        return res;
+    }
+}
+```
+
+### C++
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
+        int m = mat.size(), n = mat[0].size();
+
+        vector<pair<int,int>> arr; // {soldiers, index}
+
+        for (int i = 0; i < m; i++) {
+            int left = 0, right = n;
+            while (left < right) {
+                int mid = left + (right - left) / 2;
+                if (mat[i][mid] == 1) left = mid + 1;
+                else right = mid;
+            }
+            arr.push_back({left, i});
+        }
+
+        sort(arr.begin(), arr.end());
+
+        vector<int> res;
+        for (int i = 0; i < k; i++) {
+            res.push_back(arr[i].second);
+        }
+
+        return res;
+    }
+};
+```
