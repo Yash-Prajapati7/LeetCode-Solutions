@@ -1,29 +1,32 @@
-Leetcode Question : [Robot Return to Origin](https://leetcode.com/problems/robot-return-to-origin)
+Leetcode Question : [Robot Return to Origin](https://leetcode.com/problems/robot-return-to-origin/)
 
 ### Java
 
 ```java
 class Solution {
     public boolean judgeCircle(String moves) {
-        int up = 0, down = 0, left = 0, right = 0;
-        for(char c : moves.toCharArray()) {
-            switch(c) {
+        int n = moves.length();
+        if(n == 1) return false;
+        int x = 0, y = 0;
+        
+        for(int i = 0; i < n; i++) {
+            switch (moves.charAt(i)) {
                 case 'U' :
-                    up++;
-                    break;
-                case 'D' :
-                    down++;
-                    break;
-                case 'L' :
-                    left++;
+                    y++;
                     break;
                 case 'R' :
-                    right++;
+                    x++;
+                    break;
+                case 'D' :
+                    y--;
+                    break;
+                case 'L' :
+                    x--;
                     break;
             }
         }
 
-        return ((up == down) && (left == right));
+        return (x == 0 && y == 0);
     }
 }
 ```
@@ -37,24 +40,28 @@ using namespace std;
 class Solution {
 public:
     bool judgeCircle(string moves) {
-        int up = 0, down = 0, left = 0, right = 0;
-        for(char c : moves) {
-            switch(c) {
-                case 'U':
-                    up++;
+        int n = moves.length();
+        if(n == 1) return false;
+        int x = 0, y = 0;
+        
+        for(int i = 0; i < n; i++) {
+            switch (moves[i]) {
+                case 'U' :
+                    y++;
                     break;
-                case 'D':
-                    down++;
+                case 'R' :
+                    x++;
                     break;
-                case 'L':
-                    left++;
+                case 'D' :
+                    y--;
                     break;
-                case 'R':
-                    right++;
+                case 'L' :
+                    x--;
                     break;
             }
         }
-        return (up == down && left == right);
+
+        return (x == 0 && y == 0);
     }
 };
 ```
