@@ -15,10 +15,10 @@ class Solution {
 
             // Left half is sorted
             if(nums[left] <= nums[mid]) {
-                if(nums[left] <= target && target < nums[mid]) {
+                if(nums[left] <= target && target < nums[mid]) {    // target lies in the left sorted part
                     right = mid - 1;
                 } else {
-                    left = mid + 1;
+                    left = mid + 1;                                 // else it will lie in the right part
                 }
             }
             else {   // Right half is sorted
